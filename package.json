@@ -1,0 +1,23 @@
+{
+  "name": "easy-blog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DvDty/easy-blog.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DvDty/easy-blog/issues"
+  },
+  "homepage": "https://github.com/DvDty/easy-blog#readme",
+  "dependencies": {
+    "showdown": "^2.0.0"
+  }
+}
