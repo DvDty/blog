@@ -11,17 +11,27 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - run: npm ci
-      - run: npm run start
+      
+      - name: Install dependensies
+        run: npm ci
+        
+      - name: Run conversion script
+        run: npm run start
 
-      - name: Commit files
+      - name: Set up git
         run: |
           git config --local user.name  ${{ github.actor }}
           git add ./docs
+          
+      - name: Check for updated files
+        shell: bash
+        run: |
           status = $(git status)
-          echo $status
-          # git commit -m "Autogenerate HTML content"
+          echo "$status"
 
+      - name: Commit files
+
+      # git commit -m "Autogenerate HTML content"
       # - name: Push changes
       #  uses: ad-m/github-push-action@master
       #  with:
