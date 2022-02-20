@@ -18,8 +18,8 @@ jobs:
         run: |
           git config --local user.name  ${{ github.actor }}
           git add ./docs
-          STATUS = $(git status)
-          echo STATUS
+          status = $(git status)
+          echo $status
           # git commit -m "Autogenerate HTML content"
 
       # - name: Push changes
