@@ -27,13 +27,12 @@ jobs:
         id: git-status
         shell: bash
         run: |
-          echo contains($(git status), 'Changes to be committed')
-          # echo "SHOULD_COMMIT=contains($(git status), 'Changes to be committed')" >> $GITHUB_ENV
+          echo "GIT_STATUS=$(git status)" >> $GITHUB_ENV
 
       - name: Commit files
-        if: env.SHOULD_COMMIT
+        if: contains(env.GIT_STATUS, "Changes to be committed")
         run: |
-          git commit -m "Autogenerate HTML content"
+          git commit -m "Autogenerate converted pages"
 
       # git commit -m "Autogenerate HTML content"
       # - name: Push changes
