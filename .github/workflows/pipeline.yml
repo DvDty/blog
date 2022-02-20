@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      
+
       - name: Install dependensies
         run: npm ci
         
@@ -22,14 +22,18 @@ jobs:
         run: |
           git config --local user.name  ${{ github.actor }}
           git add ./docs
-          
+
       - name: Check for updated files
+        id: git-status
         shell: bash
         run: |
-          status=$(git status)
-          echo "$status"
+          echo "::set-output name=output::$(git status)"
+          echo "::debug::$(git status)"
 
-      # - name: Commit files
+      - name: Commit files
+        run: |
+          echo "::debug::123"
+          echo "::debug::${{ steps.git-status.output }}"
 
       # git commit -m "Autogenerate HTML content"
       # - name: Push changes
