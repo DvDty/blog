@@ -27,7 +27,7 @@ jobs:
         id: git-status
         shell: bash
         run: |
-          echo "GIT_STATUS=$(git status)" >> $GITHUB_ENV
+          echo "GIT_STATUS=${{ git status }}" >> $GITHUB_ENV
 
       - name: Commit files
         if: contains(env.GIT_STATUS, 'Changes to be committed')
