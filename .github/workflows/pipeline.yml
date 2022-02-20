@@ -18,11 +18,12 @@ jobs:
         run: |
           git config --local user.name  ${{ github.actor }}
           git add ./docs
-          git status
-          git commit -m "Autogenerate HTML content"
+          STATUS = $(git status)
+          echo STATUS
+          # git commit -m "Autogenerate HTML content"
 
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          force: true
+      # - name: Push changes
+      #  uses: ad-m/github-push-action@master
+      #  with:
+      #    github_token: ${{ secrets.GITHUB_TOKEN }}
+      #    force: true
