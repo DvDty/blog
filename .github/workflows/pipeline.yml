@@ -27,10 +27,10 @@ jobs:
         id: git-status
         shell: bash
         run: |
-          echo "GIT_STATUS=${{ $(git status) }}" >> $GITHUB_ENV
+          echo "GITSTATUS=$(git status)" >> $GITHUB_ENV
 
       - name: Commit files
-        if: contains(env.GIT_STATUS, 'Changes to be committed')
+        if: contains(env.GITSTATUS, 'Changes to be committed')
         run: |
           git commit -m "Autogenerate converted pages"
 
