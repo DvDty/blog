@@ -26,11 +26,11 @@ jobs:
       - name: Check for updated files
         id: git-status
         shell: bash
-        env:
-          has-updates: contains($(git status), 'Changes to be committed')
+        run: |
+          echo "SHOULD_COMMIT=$(contains($(git status), 'Changes to be committed'))" >> $GITHUB_ENV
 
       - name: Commit files
-        if: env.has-updates
+        if: env.SHOULD_COMMIT
         run: |
           git commit -m "Autogenerate HTML content"
 
