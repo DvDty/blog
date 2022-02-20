@@ -26,14 +26,13 @@ jobs:
       - name: Check for updated files
         id: git-status
         shell: bash
-        run: |
-          echo "::set-output name=output::$(git status)"
-          echo "::debug::$(git status)"
+        env:
+          has-updates: contains($(git status), 'Changes to be committed')
 
       - name: Commit files
+        if: env.has-updates
         run: |
-          echo "::debug::123"
-          echo "::debug::${{ steps.git-status.output }}"
+          git commit -m "Autogenerate HTML content"
 
       # git commit -m "Autogenerate HTML content"
       # - name: Push changes
