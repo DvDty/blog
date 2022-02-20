@@ -27,12 +27,13 @@ jobs:
         id: git-status
         shell: bash
         run: |
-          echo 'GIT_STATUS<<EOF' >> $GITHUB_ENV
-          git status >> $GITHUB_ENV
-          echo 'EOF' >> $GITHUB_ENV
+          # echo 'GIT_STATUS<<EOF' >> $GITHUB_ENV
+          # git status >> $GITHUB_ENV
+          # echo 'EOF' >> $GITHUB_ENV
+          echo 'SHOULD_COMMIT=contains($(git status), "Changes to be committed")' >> $GITHUB_ENV
 
       - name: Commit files
-        if: contains(env.GIT_STATUS, 'Changes to be committed')
+        if: env.SHOULD_COMMIT
         run: |
           git commit -m "Autogenerate converted pages"
 
