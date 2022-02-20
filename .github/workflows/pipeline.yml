@@ -27,7 +27,8 @@ jobs:
         id: git-status
         shell: bash
         run: |
-          echo "SHOULD_COMMIT=contains($(git status), 'Changes to be committed')" >> $GITHUB_ENV
+          echo contains($(git status), 'Changes to be committed')
+          # echo "SHOULD_COMMIT=contains($(git status), 'Changes to be committed')" >> $GITHUB_ENV
 
       - name: Commit files
         if: env.SHOULD_COMMIT
