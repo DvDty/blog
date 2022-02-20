@@ -26,7 +26,7 @@ jobs:
       - name: Check for updated files
         shell: bash
         run: |
-          status = $(git status)
+          status=$(git status)
           echo "$status"
 
       # - name: Commit files
