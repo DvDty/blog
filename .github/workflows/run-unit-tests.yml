@@ -1,0 +1,21 @@
+name: run-unit-tests
+
+on:
+  push:
+    paths-ignore:
+      - 'docs/**'
+      - 'posts/**'
+
+jobs:
+  convert-to-html:
+    if: ${{ false }}  # disabled for now
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install dependensies
+        run: npm install --dev
+
+      - name: Run conversion script
+        run: npm run test
