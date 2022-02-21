@@ -1,4 +1,4 @@
-name: pipeline
+name: convert-posts-to-html
 
 on:
   push:
@@ -32,12 +32,11 @@ jobs:
 
       - name: Commit files
         if: contains(env.GIT_STATUS, 'Changes to be committed')
-        run: |
-          git commit -m "Autogenerate converted pages"
+        run: git commit -m "Autogenerate converted pages"
 
-      # git commit -m "Autogenerate HTML content"
-      # - name: Push changes
-      #  uses: ad-m/github-push-action@master
-      #  with:
-      #    github_token: ${{ secrets.GITHUB_TOKEN }}
-      #    force: true
+      - name: Push changes
+        if: contains(env.GIT_STATUS, 'Changes to be committed')
+        uses: ad-m/github-push-action@master
+        with:
+         github_token: ${{ secrets.GITHUB_TOKEN }}
+         force: true
