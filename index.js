@@ -1,4 +1,4 @@
-require(ServiceContainer)
+require('src/ServiceContainer')
 
 ServiceContainer.singleton('config', () => {test: 123})
 
