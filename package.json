@@ -19,5 +19,6 @@
   "homepage": "https://github.com/DvDty/easy-blog#readme",
   "dependencies": {
     "showdown": "^2.0.0"
-  }
+  },
+  "type": "module"
 }
