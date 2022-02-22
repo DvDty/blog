@@ -1,4 +1,4 @@
-import {ServiceContainer} from './src/ServiceContainer'
+import {ServiceContainer} from './src/ServiceContainer.js'
 
 ServiceContainer.singleton('config', () => {test: 123})
 
