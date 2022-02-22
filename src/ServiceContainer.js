@@ -1,4 +1,4 @@
-class ServiceContainer {
+export class ServiceContainer {
     static services = new Map;
 
     static bind(key, callback) {
