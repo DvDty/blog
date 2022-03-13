@@ -12,7 +12,10 @@ export function BindServices() {
     })
 
     ServiceContainer.singleton('converter', () => {
-        return new showdown.Converter({metadata: true})
+        return new showdown.Converter({
+            metadata: true,
+            tables: true,
+        })
     })
 
     ServiceContainer.bind('htmlBuilder', () => {
