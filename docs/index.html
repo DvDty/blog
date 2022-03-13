@@ -77,11 +77,32 @@ console.log(foo(5));
 | col 2 is      | *centered*    |   $12 |
 | zebra stripes | ~~are neat~~  |    $1 |
 </code></pre>
-<p>| Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
-| <strong>col 3 is</strong>  | right-aligned | $1600 |
-| col 2 is      | <em>centered</em>    |   $12 |
-| zebra stripes | ~~are neat~~  |    $1 |</p>
+<table>
+<thead>
+<tr>
+<th>Tables</th>
+<th style="text-align:center;">Are</th>
+<th style="text-align:right;">Cool</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>col 3 is</strong></td>
+<td style="text-align:center;">right-aligned</td>
+<td style="text-align:right;">$1600</td>
+</tr>
+<tr>
+<td>col 2 is</td>
+<td style="text-align:center;"><em>centered</em></td>
+<td style="text-align:right;">$12</td>
+</tr>
+<tr>
+<td>zebra stripes</td>
+<td style="text-align:center;">~~are neat~~</td>
+<td style="text-align:right;">$1</td>
+</tr>
+</tbody>
+</table>
 <h3 id="links">Links</h3>
 <p><a href="http://dev.nodeca.com">link text</a></p>
 <p><a href="http://nodeca.github.io/pica/demo/" title="title text!">link hover info</a></p>
