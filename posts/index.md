@@ -19,14 +19,15 @@ _This is italic text_
 
 ~~Strikethrough~~
 
+___
 
 ### Blockquotes
-
 
 > Blockquotes can also be nested...
 >> ...by using additional greater-than signs right next to each other...
 > > > ...or with spaces between arrows.
-
+> > > 
+___
 
 ### Lists
 
@@ -55,6 +56,7 @@ Start numbering with offset:
 57. foo
 1. bar
 
+___
 
 ### Code
 
@@ -84,6 +86,8 @@ var foo = function (bar) {
 console.log(foo(5));
 ```
 
+___
+
 ### Tables
 
 ```md
@@ -100,6 +104,7 @@ console.log(foo(5));
 | col 2 is      | *centered*    |   $12 |
 | zebra stripes | ~~are neat~~  |    $1 |
 
+___
 
 ### Links
 
@@ -107,11 +112,13 @@ console.log(foo(5));
 
 [link hover info](http://nodeca.github.io/pica/demo/ "title text!")
 
+___
 
 ### Images
 
-![Cat](https://octodex.github.com/images/minion.png)
+![Cat](https://i.imgur.com/r4PT8WQ.jpg)
 
+___
 
 ### Headings
 
