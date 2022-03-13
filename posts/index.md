@@ -2,27 +2,12 @@
 
 Easy blog is a simple autonomous blog generation tool. It converts markdown content to HTML pages, collected in easily navigable landing page.
 
+___
 
 ## Examples
 
-# h1 Heading
-## h2 Heading
-### h3 Heading
-#### h4 Heading
-##### h5 Heading
-###### h6 Heading
 
-
-## Horizontal Rules
-
-___
-
----
-
-***
-
-
-## Emphasis
+### Emphasis
 
 **This is bold text**
 
@@ -35,7 +20,7 @@ _This is italic text_
 ~~Strikethrough~~
 
 
-## Blockquotes
+### Blockquotes
 
 
 > Blockquotes can also be nested...
@@ -43,7 +28,7 @@ _This is italic text_
 > > > ...or with spaces between arrows.
 
 
-## Lists
+### Lists
 
 Unordered
 
@@ -71,7 +56,7 @@ Start numbering with offset:
 1. bar
 
 
-## Code
+### Code
 
 Inline `code`
 
@@ -99,31 +84,40 @@ var foo = function (bar) {
 console.log(foo(5));
 ```
 
-## Tables
+### Tables
 
-| Option | Description |
-| ------ | ----------- |
-| data   | path to data files to supply the data that will be passed into templates. |
-| engine | engine to be used for processing templates. Handlebars is the default. |
-| ext    | extension to be used for dest files. |
+```md
+| Tables        | Are           | Cool  |
+| ------------- |:-------------:| -----:|
+| **col 3 is**  | right-aligned | $1600 |
+| col 2 is      | *centered*    |   $12 |
+| zebra stripes | ~~are neat~~  |    $1 |
+```
 
-Right aligned columns
-
-| Option | Description |
-| ------:| -----------:|
-| data   | path to data files to supply the data that will be passed into templates. |
-| engine | engine to be used for processing templates. Handlebars is the default. |
-| ext    | extension to be used for dest files. |
+| Tables        | Are           | Cool  |
+| ------------- |:-------------:| -----:|
+| **col 3 is**  | right-aligned | $1600 |
+| col 2 is      | *centered*    |   $12 |
+| zebra stripes | ~~are neat~~  |    $1 |
 
 
-## Links
+### Links
 
 [link text](http://dev.nodeca.com)
 
 [link hover info](http://nodeca.github.io/pica/demo/ "title text!")
 
 
-## Images
+### Images
 
-![Minion](https://octodex.github.com/images/minion.png)
-![Stormtroopocat](https://octodex.github.com/images/stormtroopocat.jpg "The Stormtroopocat")
+![Cat](https://octodex.github.com/images/minion.png)
+
+
+### Headings
+
+# h1 Heading
+## h2 Heading
+### h3 Heading
+#### h4 Heading
+##### h5 Heading
+###### h6 Heading
