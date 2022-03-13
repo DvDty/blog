@@ -1,4 +1,4 @@
-export default class {
+export class Config {
     constructor(config) {
         this.config = new Map(Object.entries(JSON.parse(config)))
     }
