@@ -1,13 +1,11 @@
 # Easy blog
 
-Easy blog is a simple autonomous blog generation tool. It converts markdown content to HTML pages, collected in easily navigable landing page.
+Easy blog is a simple autonomous blog generation tool. It converts markdown content to HTML pages, collected in easily navigable landing page. Here are some examples 😄
 
-___
-
-## Examples
 
 
 ### Emphasis
+___
 
 **This is bold text**
 
@@ -19,17 +17,20 @@ _This is italic text_
 
 ~~Strikethrough~~
 
-___
+
 
 ### Blockquotes
+___
 
 > Blockquotes can also be nested...
 >> ...by using additional greater-than signs right next to each other...
 > > > ...or with spaces between arrows.
 > > > 
-___
+
+
 
 ### Lists
+___
 
 Unordered
 
@@ -56,9 +57,10 @@ Start numbering with offset:
 57. foo
 1. bar
 
-___
+
 
 ### Code
+___
 
 Inline `code`
 
@@ -86,9 +88,10 @@ var foo = function (bar) {
 console.log(foo(5));
 ```
 
-___
+
 
 ### Tables
+___
 
 ```md
 | Tables        | Are           | Cool  |
@@ -104,23 +107,19 @@ ___
 | col 2 is      | *centered*    |   $12 |
 | zebra stripes | ~~are neat~~  |    $1 |
 
-___
+
 
 ### Links
+___
 
 [link text](http://dev.nodeca.com)
 
 [link hover info](http://nodeca.github.io/pica/demo/ "title text!")
 
-___
 
-### Images
-
-![Cat](https://i.imgur.com/r4PT8WQ.jpg)
-
-___
 
 ### Headings
+___
 
 # h1 Heading
 ## h2 Heading
@@ -128,3 +127,10 @@ ___
 #### h4 Heading
 ##### h5 Heading
 ###### h6 Heading
+
+
+
+### Images
+___
+
+![Cat](https://i.imgur.com/r4PT8WQ.jpg)
