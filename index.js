@@ -1,13 +1,18 @@
+import {BindServices} from './src/ServiceBinder.js'
 import {ServiceContainer} from './src/ServiceContainer.js'
-import Config from './src/Config.js'
-import * as fs from 'fs'
-import showdown from  'showdown'
+import fs from 'fs'
 
-ServiceContainer.singleton('config', () => {
-    let configFile = fs.readFileSync('config.json', {encoding: 'utf8'})
-    return new Config(configFile)
-})
+BindServices();
 
-ServiceContainer.singleton('converter', () => {
-    return new showdown.Converter()
+fs.readdirSync('posts').forEach(filename => {
+    let fileContent =  fs.readFileSync('posts/' + filename, {encoding: 'utf8'})
+
+    let html = ServiceContainer.get('htmlBuilder')
+        .with('title', 'Test')
+        .with('css', ServiceContainer.get('config').get('css'))
+        .withContent(fileContent)
+        .getHtml()
+
+    let htmlFilename = filename.replace('.md', '.html')
+    fs.writeFileSync('docs/' + htmlFilename, html)
 })
