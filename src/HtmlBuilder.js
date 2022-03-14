@@ -7,6 +7,7 @@ export class HtmlBuilder {
     #cache
     #template
     #templateData = {}
+    #templateMetadata = {}
 
     constructor() {
         this.#config = ServiceContainer.get('config')
@@ -21,8 +22,14 @@ export class HtmlBuilder {
         return this
     }
 
+    withMetadata(key, defaultValue) {
+        this.#templateData[key] = this.#templateMetadata[key] ?? defaultValue
+        return this
+    }
+
     withContent(content) {
         this.with('content', this.#converter.makeHtml(content))
+        this.#templateMetadata = this.#converter.getMetadata(false)
         return this
     }
 

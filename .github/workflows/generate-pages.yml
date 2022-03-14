@@ -1,4 +1,4 @@
-name: convert-posts-to-html
+name: generate-pages
 
 on:
   push:
