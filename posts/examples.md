@@ -1,11 +1,7 @@
 ---
-title: Easy blog
+title: Examples
+created_at: 2022-03-14
 ---
-# Easy blog
-
-Easy blog is a simple autonomous blog generation tool. It converts markdown content to HTML pages, collected in easily navigable landing page. Here are some examples 😄
-
-
 
 ### Emphasis
 ___
@@ -136,4 +132,4 @@ ___
 ### Images
 ___
 
-![Cat](https://i.imgur.com/r4PT8WQ.jpg)
+![Cat](https://i.imgur.com/6IaWnff.jpeg)

@@ -15,6 +15,9 @@ export class HtmlBuilder {
         this.#cache = ServiceContainer.get('cache')
 
         this.#setTemplate()
+
+        this.with('blogName', this.#config.get('blogName'))
+        this.with('cssUrl', this.#config.get('cssUrl'))
     }
 
     with(key, data) {
@@ -36,6 +39,12 @@ export class HtmlBuilder {
     getHtml() {
         this.#bindTemplateData()
         return this.#template
+    }
+
+    getMetadata(key = null, defaultValue = null) {
+        return key
+            ? (this.#templateMetadata[key] ?? defaultValue)
+            : this.#templateMetadata
     }
 
     #setTemplate() {
