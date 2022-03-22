@@ -1,6 +1,6 @@
 {
     "blogName": "Easy blog",
-    "landingDescription": "Easy blog is a simple autonomous blog generation tool. It converts markdown content to web ready HTML articles, collected in easily navigable landing page. [DvDty/easy-blog](https://github.com/DvDty/easy-blog) for the template & how to use it yourself.",
+    "landingDescription": "Easy blog is a simple autonomous blog generation tool. It converts markdown content to web ready HTML articles, collected in easily navigatable  landing page. [DvDty/easy-blog](https://github.com/DvDty/easy-blog) for the template & how to use it yourself.",
 
     "cssUrl": "https://cdn.jsdelivr.net/npm/water.css@2/out/water.min.css"
 }

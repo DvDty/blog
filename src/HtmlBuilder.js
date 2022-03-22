@@ -50,7 +50,7 @@ export class HtmlBuilder {
     #setTemplate() {
         this.#template = this.#cache.remember(
             'pageTemplate',
-            () => fs.readFileSync('./src/templates/page.html', {encoding: 'utf8'})
+            () => fs.readFileSync('./templates/page.html', {encoding: 'utf8'})
         )
     }
 
