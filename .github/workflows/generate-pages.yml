@@ -14,7 +14,7 @@ jobs:
 
       - name: Install dependensies
         run: npm ci
-        
+
       - name: Run conversion script
         run: npm run start
 
@@ -38,5 +38,5 @@ jobs:
         if: contains(env.GIT_STATUS, 'Changes to be committed')
         uses: ad-m/github-push-action@master
         with:
-         github_token: ${{ secrets.GITHUB_TOKEN }}
-         force: true
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          force: true

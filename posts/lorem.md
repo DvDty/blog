@@ -1,5 +1,6 @@
 ---
 title: Lorem ipsum
+description: This is a random article.
 created_at: 2022-03-13
 ---
 

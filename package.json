@@ -18,7 +18,11 @@
   },
   "homepage": "https://github.com/DvDty/easy-blog#readme",
   "dependencies": {
-    "showdown": "^2.0.0"
+    "@types/node": "^18.11.18",
+    "@types/showdown": "^2.0.0",
+    "showdown": "^2.0.0",
+    "tsyringe": "^4.7.0",
+    "typescript": "^4.9.4"
   },
   "type": "module"
 }
