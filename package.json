@@ -1,28 +1,23 @@
 {
   "name": "easy-blog",
   "version": "1.0.0",
-  "description": "",
+  "description": "Easy blog is a simple autonomous blog generation tool. It converts markdown content to HTML pages, collected in easily navigatable landing page.",
   "main": "index.js",
-  "scripts": {
-    "start": "node index.js"
+  "directories": {
+    "doc": "docs"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/DvDty/easy-blog.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/DvDty/easy-blog/issues"
-  },
-  "homepage": "https://github.com/DvDty/easy-blog#readme",
   "dependencies": {
-    "@types/node": "^18.11.18",
-    "@types/showdown": "^2.0.0",
-    "showdown": "^2.0.0",
-    "tsyringe": "^4.7.0",
-    "typescript": "^4.9.4"
+    "@types/node": "^20.11.30",
+    "@types/showdown": "^2.0.6",
+    "highlight.js": "^11.9.0",
+    "reflect-metadata": "^0.2.1",
+    "showdown": "^2.1.0",
+    "tsyringe": "^4.8.0",
+    "typescript": "^5.4.3"
   },
-  "type": "module"
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
 }

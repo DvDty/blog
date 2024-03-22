@@ -1,14 +1,18 @@
-import {BindServices} from './src/ServiceBinder.js'
-import {ServiceContainer} from './src/ServiceContainer.js'
-import fs from 'fs'
-
-BindServices()
-
-ServiceContainer.get('siteGenerator').generate()
+//import 'reflect-metadata';
+//import {container} from 'tsyringe';
+//import Cache from './src/Services/Cache';
 //
+//const cache = container.resolve(Cache);
+//
+//cache.set('test', 1234);
+//
+//console.log(cache.get('test'));
+
+// ServiceContainer.get('siteGenerator').generate()
+
+
 // const config = ServiceContainer.get('config')
-//
-// const pages = []
+
 //
 // fs.readdirSync('posts').forEach(filename => {
 //     const fileContent = fs.readFileSync('posts/' + filename, {encoding: 'utf8'})

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ blogName }}</title>
+    <link rel="stylesheet" href="{{ cssUrl }}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+</head>
+<body>
+<h1>{{ title }}</h1>
+
+<hr />
+<p>title: Examples</p>
+<h2 id="created_at20220314">created_at: 2022-03-14</h2>
+<h3 id="emphasis">Emphasis</h3>
+<hr />
+<p><strong>This is bold text</strong></p>
+<p><strong>This is bold text</strong></p>
+<p><em>This is italic text</em></p>
+<p><em>This is italic text</em></p>
+<p>~~Strikethrough~~</p>
+<h3 id="blockquotes">Blockquotes</h3>
+<hr />
+<blockquote>
+  <p>Blockquotes can also be nested…</p>
+  <blockquote>
+    <p>…by using additional greater-than signs right next to each other…</p>
+    <blockquote>
+      <p>…or with spaces between arrows.</p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+<h3 id="lists">Lists</h3>
+<hr />
+<p>Unordered</p>
+<ul>
+<li>Create a list by starting a line with <code>+</code>, <code>-</code>, or <code>*</code></li>
+<li>Sub-lists are made by indenting 2 spaces:<ul>
+<li>Marker character change forces new list start:<ul>
+<li>Ac tristique libero volutpat at</li>
+<li>Facilisis in pretium nisl aliquet</li>
+<li>Nulla volutpat aliquam velit</li></ul></li></ul></li>
+<li>Very easy!</li>
+</ul>
+<p>Ordered</p>
+<ol>
+<li><p>Lorem ipsum dolor sit amet</p></li>
+<li><p>Consectetur adipiscing elit</p></li>
+<li><p>Integer molestie lorem at massa</p></li>
+<li><p>You can use sequential numbers…</p></li>
+<li><p>…or keep all the numbers as <code>1.</code></p></li>
+</ol>
+<p>Start numbering with offset:</p>
+<ol start="57">
+<li>foo</li>
+<li>bar</li>
+</ol>
+<h3 id="code">Code</h3>
+<hr />
+<p>Inline <code>code</code></p>
+<p>Indented code</p>
+<pre><code>// Some comments
+line 1 of code
+line 2 of code
+line 3 of code
+</code></pre>
+<p>Block code "fences"</p>
+<pre><code>Sample text here...
+</code></pre>
+<p>Syntax highlighting</p>
+<pre><code class="js language-js">var foo = function (bar) {
+  return bar++;
+};
+
+console.log(foo(5));
+</code></pre>
+<h3 id="tables">Tables</h3>
+<hr />
+<pre><code class="md language-md">| Tables        | Are           | Cool  |
+| ------------- |:-------------:| -----:|
+| **col 3 is**  | right-aligned | $1600 |
+| col 2 is      | *centered*    |   $12 |
+| zebra stripes | ~~are neat~~  |    $1 |
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Tables</th>
+<th style="text-align:center;">Are</th>
+<th style="text-align:right;">Cool</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>col 3 is</strong></td>
+<td style="text-align:center;">right-aligned</td>
+<td style="text-align:right;">$1600</td>
+</tr>
+<tr>
+<td>col 2 is</td>
+<td style="text-align:center;"><em>centered</em></td>
+<td style="text-align:right;">$12</td>
+</tr>
+<tr>
+<td>zebra stripes</td>
+<td style="text-align:center;">~~are neat~~</td>
+<td style="text-align:right;">$1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="links">Links</h3>
+<hr />
+<p><a href="http://dev.nodeca.com">link text</a></p>
+<p><a href="http://nodeca.github.io/pica/demo/" title="title text!">link hover info</a></p>
+<h3 id="headings">Headings</h3>
+<hr />
+<h1 id="h1heading">h1 Heading</h1>
+<h2 id="h2heading">h2 Heading</h2>
+<h3 id="h3heading">h3 Heading</h3>
+<h4 id="h4heading">h4 Heading</h4>
+<h5 id="h5heading">h5 Heading</h5>
+<h6 id="h6heading">h6 Heading</h6>
+<h3 id="images">Images</h3>
+<hr />
+<p><img src="https://i.imgur.com/6IaWnff.jpeg" alt="Cat" /></p>
+
+<pre>
+    <code class="language-php">
+        class A
+        {
+            public static function a(): int
+            {
+                return 123;
+            }
+        }
+    </code>
+</pre>
+
+<script>hljs.highlightAll();</script>
+</body>
+</html>
