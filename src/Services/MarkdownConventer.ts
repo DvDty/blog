@@ -1,29 +1,36 @@
 import {injectable} from 'tsyringe';
 import showdown from 'showdown';
-import hljs from 'highlight.js';
 
 @injectable()
-export default class MarkdownConverter
-{
+export default class MarkdownConverter {
     private showdownConverter: showdown.Converter;
 
     constructor() {
         this.showdownConverter = new showdown.Converter();
+
+        this.showdownConverter.setOption('ghCompatibleHeaderId', true);
+        this.showdownConverter.setOption('ghMentions', true);
+
+        this.showdownConverter.setOption('metadata', true);
+        this.showdownConverter.setOption('openLinksInNewWindow', true);
+        this.showdownConverter.setOption('simplifiedAutoLink', true);
+        this.showdownConverter.setOption('strikethrough', true);
         this.showdownConverter.setOption('tables', true);
         this.showdownConverter.setOption('tasklists', true);
-        this.showdownConverter.setOption('literalMidWordUnderscores', true);
     }
 
     public toHtml(markdown: string): string {
-        const html = this.showdownConverter.makeHtml(markdown);
-
-        return this.highlightCodeBlocks(html);
+        this.showdownConverter.getMetadata()
+        return this.showdownConverter.makeHtml(markdown);
     }
 
-    private highlightCodeBlocks(html: string): string {
-        return html.replace(/<pre><code class="([^"]+)">([\s\S]+?)<\/code><\/pre>/g, (_match, lang, code) => {
-            const highlightedCode = hljs.highlightAuto(code, [lang]).value;
-            return `<pre><code class="${lang}">${highlightedCode}</code></pre>`;
-        });
+    public getMetadata(): showdown.Metadata {
+        let metadata: string | showdown.Metadata = this.showdownConverter.getMetadata(false)
+
+        if (typeof metadata === 'string') {
+            return {};
+        }
+
+        return metadata;
     }
 }

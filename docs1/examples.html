@@ -1,29 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ blogName }}</title>
-    <link rel="stylesheet" href="{{ cssUrl }}">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
-</head>
-<body>
-<h1>{{ title }}</h1>
-
-<hr />
-<p>title: Examples</p>
-<h2 id="created_at20220314">created_at: 2022-03-14</h2>
 <h3 id="emphasis">Emphasis</h3>
 <hr />
 <p><strong>This is bold text</strong></p>
 <p><strong>This is bold text</strong></p>
 <p><em>This is italic text</em></p>
 <p><em>This is italic text</em></p>
-<p>~~Strikethrough~~</p>
+<p><del>Strikethrough</del></p>
 <h3 id="blockquotes">Blockquotes</h3>
 <hr />
 <blockquote>
@@ -108,39 +89,23 @@ console.log(foo(5));
 </tr>
 <tr>
 <td>zebra stripes</td>
-<td style="text-align:center;">~~are neat~~</td>
+<td style="text-align:center;"><del>are neat</del></td>
 <td style="text-align:right;">$1</td>
 </tr>
 </tbody>
 </table>
 <h3 id="links">Links</h3>
 <hr />
-<p><a href="http://dev.nodeca.com">link text</a></p>
-<p><a href="http://nodeca.github.io/pica/demo/" title="title text!">link hover info</a></p>
+<p><a href="http://dev.nodeca.com" rel="noopener noreferrer" target="_blank">link text</a></p>
+<p><a href="http://nodeca.github.io/pica/demo/" title="title text!" rel="noopener noreferrer" target="_blank">link hover info</a></p>
 <h3 id="headings">Headings</h3>
 <hr />
-<h1 id="h1heading">h1 Heading</h1>
-<h2 id="h2heading">h2 Heading</h2>
-<h3 id="h3heading">h3 Heading</h3>
-<h4 id="h4heading">h4 Heading</h4>
-<h5 id="h5heading">h5 Heading</h5>
-<h6 id="h6heading">h6 Heading</h6>
+<h1 id="h1-heading">h1 Heading</h1>
+<h2 id="h2-heading">h2 Heading</h2>
+<h3 id="h3-heading">h3 Heading</h3>
+<h4 id="h4-heading">h4 Heading</h4>
+<h5 id="h5-heading">h5 Heading</h5>
+<h6 id="h6-heading">h6 Heading</h6>
 <h3 id="images">Images</h3>
 <hr />
 <p><img src="https://i.imgur.com/6IaWnff.jpeg" alt="Cat" /></p>
-
-<pre>
-    <code class="language-php">
-        class A
-        {
-            public static function a(): int
-            {
-                return 123;
-            }
-        }
-    </code>
-</pre>
-
-<script>hljs.highlightAll();</script>
-</body>
-</html>
