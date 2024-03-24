@@ -1,21 +1,20 @@
 import {container} from 'tsyringe';
 import fs from 'fs';
 import Article from '../Article';
-import File from './File';
+import Storage from './Storage';
 
 export default class Blog {
-    private file: File;
+    private storage: Storage;
 
     constructor() {
-        this.file = container.resolve(File);
+        this.storage = container.resolve(Storage);
     }
 
     public generate(): void {
         this.getArticles().forEach((article: Article): void => {
             const path: string = 'docs1/' + article.name.replace('.md', '.html');
-            const content: string = this.getTemplate('article').replace('{{ content }}', article.html);
 
-            this.file.writeContent(path, content);
+            this.storage.writeContent(path, article.withCodeHighlighting().getHtml());
         });
     }
 
@@ -24,6 +23,6 @@ export default class Blog {
     }
 
     private getTemplate(template: string): string {
-        return this.file.getContent('templates/' + template + '.html');
+        return this.storage.getContent('templates/' + template + '.html');
     }
 }

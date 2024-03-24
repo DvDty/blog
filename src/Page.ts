@@ -1,29 +1,53 @@
 import {container} from 'tsyringe';
-import File from './Services/File';
+import Storage from './Services/Storage';
 import MarkdownConverter from './Services/MarkdownConventer';
-import showdown from 'showdown';
 import CodeHighlighter from './Services/CodeHighlighter';
+import showdown from 'showdown';
 
 export default abstract class Page {
     public readonly name: string;
     public readonly content: string;
-    public readonly metadata: showdown.Metadata;
 
-    private readonly html: string;
+    private template: string = '';
+    private highlightCode: boolean = false;
 
     public constructor(name: string) {
         this.name = name;
-        this.content = container.resolve(File).getContent('articles/' + name);
+        this.content = container.resolve(Storage).getContent('articles/' + name);
+    }
 
+    public withCodeHighlighting(): Page {
+        this.highlightCode = true;
+
+        return this;
+    }
+
+    public withTemplate(template: string): Page {
+        this.template = template;
+
+        return this;
+    }
+
+    public getHtml(): string {
         const markdownConverter: MarkdownConverter = container.resolve(MarkdownConverter);
 
-        this.html = markdownConverter.toHtml(this.content);
-        this.html = container.resolve(CodeHighlighter).highlightAuto(this.html)
+        let html: string = markdownConverter.toHtml(this.content);
+        let metadata: showdown.Metadata = markdownConverter.getMetadata();
 
-        this.metadata = markdownConverter.getMetadata();
-
-        for (const key in this.metadata) {
-            this.html = this.html.replace(`{{ ${key} }}`, this.metadata[key])
+        if (this.highlightCode) {
+            html = container.resolve(CodeHighlighter).highlightAuto(html);
         }
+
+        if (this.template) {
+            container.resolve(Storage).getContent('templates/' + this.template);
+
+            // html =
+        }
+
+        for (const key in metadata) {
+            html = html.replace(`{{ ${key} }}`, metadata[key]);
+        }
+
+        return html;
     }
 }

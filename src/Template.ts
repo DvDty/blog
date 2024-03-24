@@ -1,13 +1,13 @@
 import {container, singleton} from 'tsyringe';
-import File from './Services/File';
+import Storage from './Services/Storage';
 
 @singleton()
 class Template {
-    private file: File;
+    private file: Storage;
     private templates: Map<string, string> = new Map();
 
     public constructor() {
-        this.file = container.resolve(File);
+        this.file = container.resolve(Storage);
     }
 
     public get(name: string): string {
