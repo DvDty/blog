@@ -7,7 +7,7 @@ import {Template} from '../Template';
 export default class Blog {
     public generate(): void {
         this.getArticles().forEach((article: Article): void => {
-            const path: string = 'docs1/' + article.name.replace('.md', '.html');
+            const path: string = 'docs/' + article.name.replace('.md', '.html');
             const html: string = article.withCodeHighlighting().withTemplate(Template.Article).getHtml();
 
             container.resolve(Storage).writeContent(path, html);
