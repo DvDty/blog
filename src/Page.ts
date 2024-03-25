@@ -3,12 +3,13 @@ import Storage from './Services/Storage';
 import MarkdownConverter from './Services/MarkdownConventer';
 import CodeHighlighter from './Services/CodeHighlighter';
 import showdown from 'showdown';
+import {Template} from './Template';
 
 export default abstract class Page {
     public readonly name: string;
     public readonly content: string;
 
-    private template: string = '';
+    private template: Template | undefined;
     private highlightCode: boolean = false;
 
     public constructor(name: string) {
@@ -22,7 +23,7 @@ export default abstract class Page {
         return this;
     }
 
-    public withTemplate(template: string): Page {
+    public withTemplate(template: Template): Page {
         this.template = template;
 
         return this;
@@ -39,9 +40,8 @@ export default abstract class Page {
         }
 
         if (this.template) {
-            container.resolve(Storage).getContent('templates/' + this.template);
-
-            // html =
+            console.log(1);
+            html = container.resolve(Storage).getContent(this.template).replace('{{ content }}', html);
         }
 
         for (const key in metadata) {

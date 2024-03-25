@@ -2,19 +2,15 @@ import {container} from 'tsyringe';
 import fs from 'fs';
 import Article from '../Article';
 import Storage from './Storage';
+import {Template} from '../Template';
 
 export default class Blog {
-    private storage: Storage;
-
-    constructor() {
-        this.storage = container.resolve(Storage);
-    }
-
     public generate(): void {
         this.getArticles().forEach((article: Article): void => {
             const path: string = 'docs1/' + article.name.replace('.md', '.html');
+            const html: string = article.withCodeHighlighting().withTemplate(Template.Article).getHtml();
 
-            this.storage.writeContent(path, article.withCodeHighlighting().getHtml());
+            container.resolve(Storage).writeContent(path, html);
         });
     }
 
@@ -23,6 +19,6 @@ export default class Blog {
     }
 
     private getTemplate(template: string): string {
-        return this.storage.getContent('templates/' + template + '.html');
+        return container.resolve(Storage).getContent('templates/' + template + '.html');
     }
 }
