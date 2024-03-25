@@ -17,8 +17,4 @@ export default class Blog {
     private getArticles(): Article[] {
         return fs.readdirSync('articles').map((post: string) => new Article(post));
     }
-
-    private getTemplate(template: string): string {
-        return container.resolve(Storage).getContent('templates/' + template + '.html');
-    }
 }

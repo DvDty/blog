@@ -40,7 +40,6 @@ export default abstract class Page {
         }
 
         if (this.template) {
-            console.log(1);
             html = container.resolve(Storage).getContent(this.template).replace('{{ content }}', html);
         }
 
