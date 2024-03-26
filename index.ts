@@ -1,4 +1,4 @@
-import 'reflect-metadata';
-import Blog from './src/Services/Blog';
+import 'reflect-metadata'
+import Blog from './src/Services/Blog'
 
-new Blog().generate();
+new Blog().generate()

@@ -1,3 +1,3 @@
 export enum Template {
-    Article = './templates/article.html',
+  Article = './templates/article.html',
 }
