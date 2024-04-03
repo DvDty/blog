@@ -1,9 +1,6 @@
 name: generate-pages
 
-on:
-  push:
-    paths-ignore:
-      - 'docs/**'
+on: []
 
 jobs:
   convert-to-html:
