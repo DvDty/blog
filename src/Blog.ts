@@ -1,8 +1,8 @@
 import { container } from 'tsyringe'
 import fs from 'fs'
-import Article from '../Article'
-import Storage from './Storage'
-import { Template } from '../Template'
+import Article from './Article'
+import Storage from './Services/Storage'
+import { Template } from './Template'
 
 export default class Blog {
   public generate (): void {
@@ -12,6 +12,8 @@ export default class Blog {
 
       container.resolve(Storage).writeContent(path, html)
     })
+
+    console.log(this.getArticles())
   }
 
   private getArticles (): Article[] {

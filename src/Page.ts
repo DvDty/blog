@@ -8,13 +8,19 @@ import { type Template } from './Template'
 export default abstract class Page {
   public readonly name: string
   public readonly content: string
+  public readonly metadata: showdown.Metadata
 
+  private html: string
   private template: Template | undefined
   private highlightCode: boolean = false
 
   public constructor (name: string) {
+    const markdownConverter: MarkdownConverter = container.resolve(MarkdownConverter)
+
     this.name = name
     this.content = container.resolve(Storage).getContent('articles/' + name)
+    this.html = markdownConverter.toHtml(this.content)
+    this.metadata = markdownConverter.getMetadata()
   }
 
   public withCodeHighlighting (): this {
@@ -30,23 +36,18 @@ export default abstract class Page {
   }
 
   public getHtml (): string {
-    const markdownConverter: MarkdownConverter = container.resolve(MarkdownConverter)
-
-    let html: string = markdownConverter.toHtml(this.content)
-    const metadata: showdown.Metadata = markdownConverter.getMetadata()
-
     if (this.highlightCode) {
-      html = container.resolve(CodeHighlighter).highlightAuto(html)
+      this.html = container.resolve(CodeHighlighter).highlightAuto(this.html)
     }
 
     if (this.template != null) {
-      html = container.resolve(Storage).getContent(this.template).replace('{{ content }}', html)
+      this.html = container.resolve(Storage).getContent(this.template).replace('{{ content }}', this.html)
     }
 
-    for (const key in metadata) {
-      html = html.replace(`{{ ${key} }}`, metadata[key])
+    for (const key in this.metadata) {
+      this.html = this.html.replaceAll(`{{ ${key} }}`, this.metadata[key])
     }
 
-    return html
+    return this.html
   }
 }

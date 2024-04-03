@@ -1,19 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ blogName }}</title>
-    <!--<link rel="stylesheet" href="{{ cssUrl }}">-->
+    <title>Lorem ipsum</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+    <style>
+        html {
+            font-family: "Roboto", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        body, h1, h2, h3, p, ul, ol {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        ul,
+        ol {
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+    </style>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
 </head>
-<body>
-<h1>Lorem ipsum</h1>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus imperdiet eu erat quis auctor. Sed a purus enim. Nullam semper luctus lorem, ac lobortis ligula dignissim vitae. Duis nec volutpat massa. Ut metus ipsum, porttitor eget orci eu, porttitor pulvinar nulla. Quisque maximus laoreet rutrum. In ultrices ac sem sed facilisis. In a mattis nisi. Curabitur ornare faucibus risus, ut euismod libero varius et. Maecenas ornare porttitor orci, et placerat libero sodales sed. Suspendisse tempus malesuada leo id rhoncus. Vivamus rhoncus ut mauris in convallis.</p>
+<body>
+
+    <div class="container">
+        <h1>Lorem ipsum</h1>
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus imperdiet eu erat quis auctor. Sed a purus enim. Nullam semper luctus lorem, ac lobortis ligula dignissim vitae. Duis nec volutpat massa. Ut metus ipsum, porttitor eget orci eu, porttitor pulvinar nulla. Quisque maximus laoreet rutrum. In ultrices ac sem sed facilisis. In a mattis nisi. Curabitur ornare faucibus risus, ut euismod libero varius et. Maecenas ornare porttitor orci, et placerat libero sodales sed. Suspendisse tempus malesuada leo id rhoncus. Vivamus rhoncus ut mauris in convallis.</p>
 <p>In hac habitasse platea dictumst. Quisque blandit lobortis lacus. Aenean eget imperdiet lectus, a tempus arcu. Etiam volutpat, dui sit amet suscipit ornare, enim arcu malesuada diam, ut placerat augue nunc at eros. Pellentesque eget fermentum ligula, sed venenatis lorem. Morbi ac lacus ipsum. Duis at nisl dignissim, iaculis tortor at, volutpat neque. Donec finibus dictum condimentum. Morbi non feugiat lorem. Fusce maximus elit imperdiet, pretium felis id, porta velit. Ut odio diam, blandit eget euismod ac, sodales nec ante. Pellentesque fermentum, tortor non mattis posuere, purus ipsum aliquam mi, sit amet iaculis dui eros eu lorem. Donec suscipit semper justo, sed fringilla enim luctus quis.</p>
 <pre><code class="typescript language-typescript">// Define a simple function that adds two numbers
 function add(a: number, b: number): number {
@@ -24,7 +83,9 @@ function add(a: number, b: number): number {
 const result = add(5, 3);
 console.log(result); // Output: 8
 </code></pre>
+    </div>
 
-<script>hljs.highlightAll();</script>
+    <script>hljs.highlightAll();</script>
 </body>
+
 </html>

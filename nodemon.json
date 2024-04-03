@@ -1,5 +1,5 @@
 {
-    "watch": ["src"],
-    "ext": "ts",
+    "watch": ["src", "templates"],
+    "ext": "*",
     "exec": "ts-node index.ts"
   }

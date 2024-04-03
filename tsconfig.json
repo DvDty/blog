@@ -8,6 +8,9 @@
         "skipLibCheck": true,
         "experimentalDecorators": true,
         "noImplicitAny": false,
-        "outDir": "./dist"
+        "outDir": "./dist",
+        "lib": [
+            "ES2021.String"
+        ]
     }
 }
