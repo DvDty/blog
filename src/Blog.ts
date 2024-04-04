@@ -12,8 +12,6 @@ export default class Blog {
 
       container.resolve(Storage).writeContent(path, html)
     })
-
-    console.log(this.getArticles())
   }
 
   private getArticles (): Article[] {

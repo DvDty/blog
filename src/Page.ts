@@ -4,6 +4,7 @@ import MarkdownConverter from './Services/MarkdownConventer'
 import CodeHighlighter from './Services/CodeHighlighter'
 import type showdown from 'showdown'
 import { type Template } from './Template'
+import moment from 'moment'
 
 export default abstract class Page {
   public readonly name: string
@@ -20,7 +21,9 @@ export default abstract class Page {
     this.name = name
     this.content = container.resolve(Storage).getContent('articles/' + name)
     this.html = markdownConverter.toHtml(this.content)
+
     this.metadata = markdownConverter.getMetadata()
+    this.metadata.created_at = moment(this.metadata.created_at).fromNow()
   }
 
   public withCodeHighlighting (): this {

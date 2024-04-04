@@ -16,6 +16,8 @@
             font-family: "Roboto", sans-serif;
             font-weight: 400;
             font-style: normal;
+            background-color: #17191A;
+            color: #E8E6E3;
         }
 
         body, h1, h2, h3, p, ul, ol {
@@ -29,19 +31,13 @@
             padding: 0 20px;
         }
 
+        .title {
+            margin-bottom: 30px;
+        }
+
         h1 {
             font-size: 28px;
-            margin-bottom: 20px;
-        }
-
-        h2 {
-            font-size: 24px;
-            margin-bottom: 15px;
-        }
-
-        h3 {
-            font-size: 20px;
-            margin-bottom: 10px;
+            display: inline-block;
         }
 
         p {
@@ -53,8 +49,7 @@
             text-decoration: none;
         }
 
-        ul,
-        ol {
+        ul, ol {
             margin-bottom: 15px;
         }
 
@@ -63,7 +58,7 @@
         }
     </style>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
 </head>
 
@@ -71,6 +66,7 @@
 
     <div class="container">
         <h1>{{ title }}</h1>
+        <div class="title">{{ created_at }} (updated: {{ created_at }})</div>
 
         {{ content }}
     </div>

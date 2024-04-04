@@ -10,6 +10,7 @@
     "@types/node": "^20.11.30",
     "@types/showdown": "^2.0.6",
     "highlight.js": "^11.9.0",
+    "moment": "^2.30.1",
     "reflect-metadata": "^0.2.1",
     "showdown": "^2.1.0",
     "tsyringe": "^4.8.0",
