@@ -1,8 +1,8 @@
 import { container } from 'tsyringe'
 import fs from 'fs'
-import Article from './Article'
+import Article from './Pages/Article'
 import Storage from './Services/Storage'
-import { Template } from './Template'
+import { Template } from './Pages/Template'
 
 export default class Blog {
   public generate (): void {

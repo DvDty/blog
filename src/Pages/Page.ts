@@ -1,10 +1,8 @@
 import { container } from 'tsyringe'
-import Storage from './Services/Storage'
-import MarkdownConverter from './Services/MarkdownConventer'
-import CodeHighlighter from './Services/CodeHighlighter'
+import Storage from '../Services/Storage'
+import MarkdownConverter from '../Services/MarkdownConventer'
+import CodeHighlighter from '../Services/CodeHighlighter'
 import type showdown from 'showdown'
-import { type Template } from './Template'
-import moment from 'moment'
 
 export default abstract class Page {
   public readonly name: string
@@ -12,7 +10,7 @@ export default abstract class Page {
   public readonly metadata: showdown.Metadata
 
   private html: string
-  private template: Template | undefined
+  private templateData: Map<string, string>
   private highlightCode: boolean = false
 
   public constructor (name: string) {
@@ -23,7 +21,6 @@ export default abstract class Page {
     this.html = markdownConverter.toHtml(this.content)
 
     this.metadata = markdownConverter.getMetadata()
-    this.metadata.created_at = moment(this.metadata.created_at).fromNow()
   }
 
   public withCodeHighlighting (): this {
