@@ -9,9 +9,8 @@ export default abstract class Page {
   public readonly content: string
   public readonly metadata: showdown.Metadata
 
-  private html: string
-  private templateData: Map<string, string>
-  private highlightCode: boolean = false
+  private readonly html: string
+  private readonly templateData: Map<string, string> = new Map<string, string>()
 
   public constructor (name: string) {
     const markdownConverter: MarkdownConverter = container.resolve(MarkdownConverter)
@@ -21,33 +20,19 @@ export default abstract class Page {
     this.html = markdownConverter.toHtml(this.content)
 
     this.metadata = markdownConverter.getMetadata()
-  }
 
-  public withCodeHighlighting (): this {
-    this.highlightCode = true
-
-    return this
-  }
-
-  public withTemplate (template: Template): this {
-    this.template = template
-
-    return this
+    for (const key in this.metadata) {
+      this.templateData.set(key, this.metadata[key])
+    }
   }
 
   public getHtml (): string {
-    if (this.highlightCode) {
-      this.html = container.resolve(CodeHighlighter).highlightAuto(this.html)
-    }
+    let html: string = container.resolve(Storage).getContent('./assets/template.html')
 
-    if (this.template != null) {
-      this.html = container.resolve(Storage).getContent(this.template).replace('{{ content }}', this.html)
-    }
+    this.templateData.set('content', container.resolve(CodeHighlighter).highlightAuto(this.html))
 
-    for (const key in this.metadata) {
-      this.html = this.html.replaceAll(`{{ ${key} }}`, this.metadata[key])
-    }
+    this.templateData.forEach((value: string, key: string) => { html = html.replaceAll(`{{ ${key} }}`, value) })
 
-    return this.html
+    return html
   }
 }
