@@ -1,0 +1,44 @@
+html {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    background-color: #17191A;
+    color: #E8E6E3;
+}
+
+body, h1, h2, h3, p, ul, ol {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+.dates {
+    margin-bottom: 30px;
+}
+
+h1 {
+    font-size: 28px;
+    display: inline-block;
+}
+
+p {
+    margin-bottom: 15px;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+ul, ol {
+    margin-bottom: 15px;
+}
+
+li {
+    margin-bottom: 5px;
+}

@@ -5,18 +5,23 @@ import CodeHighlighter from '../Services/CodeHighlighter'
 import type showdown from 'showdown'
 
 export default abstract class Page {
+  public content: string
   public readonly name: string
-  public readonly content: string
-  public readonly metadata: showdown.Metadata
+  public metadata: showdown.Metadata = {}
 
-  private readonly html: string
+  private html: string = ''
   private readonly templateData: Map<string, string> = new Map<string, string>()
 
   public constructor (name: string) {
-    const markdownConverter: MarkdownConverter = container.resolve(MarkdownConverter)
-
     this.name = name
     this.content = container.resolve(Storage).getContent('articles/' + name)
+
+    this.parseMarkdown()
+  }
+
+  protected parseMarkdown (): void {
+    const markdownConverter: MarkdownConverter = container.resolve(MarkdownConverter)
+
     this.html = markdownConverter.toHtml(this.content)
 
     this.metadata = markdownConverter.getMetadata()
@@ -28,8 +33,10 @@ export default abstract class Page {
 
   public getHtml (): string {
     let html: string = container.resolve(Storage).getContent('./assets/template.html')
+    const styles: string = container.resolve(Storage).getContent('./assets/styles.css')
 
     this.templateData.set('content', container.resolve(CodeHighlighter).highlightAuto(this.html))
+    this.templateData.set('styles', `<style>${styles}</style>`)
 
     this.templateData.forEach((value: string, key: string) => { html = html.replaceAll(`{{ ${key} }}`, value) })
 

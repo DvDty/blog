@@ -1,7 +1,7 @@
 ---
 title: Lorem ipsum
-description: This is a random article.
 created_at: 2022-03-13
+updated_at: 2024-04-07
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus imperdiet eu erat quis auctor. Sed a purus enim. Nullam semper luctus lorem, ac lobortis ligula dignissim vitae. Duis nec volutpat massa. Ut metus ipsum, porttitor eget orci eu, porttitor pulvinar nulla. Quisque maximus laoreet rutrum. In ultrices ac sem sed facilisis. In a mattis nisi. Curabitur ornare faucibus risus, ut euismod libero varius et. Maecenas ornare porttitor orci, et placerat libero sodales sed. Suspendisse tempus malesuada leo id rhoncus. Vivamus rhoncus ut mauris in convallis.
