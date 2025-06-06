@@ -7,28 +7,35 @@
     "doc": "docs"
   },
   "dependencies": {
-    "@types/node": "^20.11.30",
+    "@types/node": "^22.15.30",
     "@types/showdown": "^2.0.6",
-    "highlight.js": "^11.9.0",
+    "highlight.js": "^11.11.1",
     "moment": "^2.30.1",
-    "reflect-metadata": "^0.2.1",
+    "reflect-metadata": "^0.2.2",
     "showdown": "^2.1.0",
-    "tsyringe": "^4.8.0",
-    "typescript": "^5.4.3"
+    "tsyringe": "^4.10.0",
+    "typescript": "^5.8.3"
   },
   "scripts": {
-    "start": "nodemon"
+    "start": "nodemon",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix",
+    "build": "tsc",
+    "generate": "bun run index.ts"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^6.21.0",
-    "eslint": "^8.57.0",
-    "eslint-config-standard-with-typescript": "^43.0.1",
-    "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-n": "^16.6.2",
-    "eslint-plugin-promise": "^6.1.1",
-    "nodemon": "^3.1.0",
+    "@eslint/js": "^9.28.0",
+    "@typescript-eslint/eslint-plugin": "^8.33.1",
+    "@typescript-eslint/parser": "^8.33.1",
+    "eslint": "^9.28.0",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-n": "^17.19.0",
+    "eslint-plugin-promise": "^7.2.1",
+    "globals": "^14.0.0",
+    "nodemon": "^3.1.10",
     "ts-node": "^10.9.2"
-  }
+  },
+  "type": "module"
 }

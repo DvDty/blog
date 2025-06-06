@@ -12,7 +12,7 @@ export default abstract class Page {
   private html: string = ''
   private readonly templateData: Map<string, string> = new Map<string, string>()
 
-  public constructor (name: string) {
+  protected constructor (name: string) {
     this.name = name
     this.content = container.resolve(Storage).getContent('articles/' + name)
 

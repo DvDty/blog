@@ -10,6 +10,8 @@ export default class Blog {
       const html: string = article.getHtml()
 
       container.resolve(Storage).writeContent(path, html)
+
+      // container.resolve(Storage).writeContent('docs/index.html', html)
     })
   }
 
