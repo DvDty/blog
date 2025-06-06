@@ -1,39 +1,38 @@
-name: generate-pages
+name: Generate pages & deploy the blog
 
-on: []
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
   convert-to-html:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
 
       - name: Install dependencies
-        run: npm ci
+        run: deno install
 
-      - name: Run conversion script
-        run: npm run start
+      - name: Generate the blog
+        run: bun run index.ts
 
-      - name: Set up git
-        run: |
-          git config --local user.name  ${{ github.actor }}
-          git add ./docs
-
-      - name: Check for updated files
-        shell: bash
-        run: |
-          echo 'GIT_STATUS<<EOF' >> $GITHUB_ENV
-          git status >> $GITHUB_ENV
-          echo 'EOF' >> $GITHUB_ENV
-
-      - name: Commit files
-        if: contains(env.GIT_STATUS, 'Changes to be committed')
-        run: git commit -m "Autogenerate converted pages"
-
-      - name: Push changes
-        if: contains(env.GIT_STATUS, 'Changes to be committed')
-        uses: ad-m/github-push-action@master
+      - name: Upload artifact for GitHub Pages
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          force: true
+          path: ./docs  # or ./dist, ./public, etc.
+
+      - name: Deploy to GitHub Pages
+        id: deploy
+        uses: actions/deploy-pages@v4
