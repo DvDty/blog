@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "Easy blog is a simple autonomous blog generation tool. It converts markdown content to HTML pages, collected in easily navigatable landing page.",
   "main": "index.js",
-  "directories": {
-    "doc": "docs"
-  },
   "dependencies": {
     "@types/node": "^22.15.30",
     "@types/showdown": "^2.0.6",
