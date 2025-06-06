@@ -20,7 +20,6 @@ export default class MarkdownConverter {
   }
 
   public toHtml (markdown: string): string {
-    this.showdownConverter.getMetadata()
     return this.showdownConverter.makeHtml(markdown)
   }
 
