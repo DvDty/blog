@@ -6,7 +6,7 @@ export default class Index extends Page {
         super()
 
         articles.forEach((article: Article) => {
-            this.appendHtml(`     
+            this.html += `     
                 <div style="margin-bottom: 40px;">
                     <div style="margin-bottom: 15px;">
                         <h1><a href="${article.htmlName}">${article.metadata.title}</a></h1>
@@ -14,7 +14,7 @@ export default class Index extends Page {
 
                     <div>${article.metadata.created_at} • ${article.readingTime} min read</div>
                 </div>
-            `)
+            `
         })
     }
 }

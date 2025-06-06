@@ -47,14 +47,9 @@ export default class Article extends Page {
     }
 
     this.content = `# ${this.metadata.title} \n ${date} \n\n ${this.content}`
-    
-    // Calculate reading time after content is fully processed
+
     this.readingTime = this.calculateReadingTime(this.content)
 
     this.html = markdownConverter.toHtml(this.content)
-
-    for (const key in this.metadata) {
-      this.templateData.set(key, this.metadata[key])
-    }
   }
 }

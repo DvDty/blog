@@ -1,5 +1,6 @@
 import { singleton } from 'tsyringe'
 import fs from 'fs'
+import path from 'path'
 
 @singleton()
 export default class Storage {
@@ -14,6 +15,17 @@ export default class Storage {
   }
 
   public writeContent (path: string, content: string): void {
+    const dir = path.substring(0, path.lastIndexOf('/'))
+    if (dir) {
+      fs.mkdirSync(dir, { recursive: true })
+    }
     fs.writeFileSync(path, content)
+  }
+
+  public copyImage(sourcePath: string, targetPath: string): void {
+    const dir = path.dirname(targetPath)
+    fs.mkdirSync(dir, { recursive: true })
+
+    fs.copyFileSync(sourcePath, targetPath)
   }
 }
