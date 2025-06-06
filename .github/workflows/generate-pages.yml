@@ -18,12 +18,10 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - uses: denoland/setup-deno@v2
-        with:
-          deno-version: v2.x
+      - uses: oven-sh/setup-bun@v2
 
       - name: Install dependencies
-        run: deno install
+        run: bun install
 
       - name: Generate the blog
         run: bun run index.ts
