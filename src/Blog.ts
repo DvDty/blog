@@ -15,12 +15,13 @@ export default class Blog {
     public generate(): void {
         const articles = this.getArticles()
 
+        this.copyAssets()
+
         articles.forEach((article: Article): void => {
             const path: string = 'public/' + article.htmlName
             const html: string = article.getHtml()
 
             this.storage.writeContent(path, html)
-            this.copyArticleImages(article)
         })
 
         this.storage.writeContent('public/index.html', new Index(articles).getHtml())
@@ -32,17 +33,26 @@ export default class Blog {
             .map((post: string) => new Article(post))
     }
 
-    private copyArticleImages(): void {
-        const imagesDir = path.join('articles', 'images')
-        const publicImagesDir = path.join('public', 'images')
-
-        fs.readdirSync(imagesDir).forEach(file => {
-            const sourcePath = path.join(imagesDir, file)
-            const targetPath = path.join(publicImagesDir, file)
-
-            if (fs.statSync(sourcePath).isFile()) {
-                this.storage.copyImage(sourcePath, targetPath)
+    private copyAssets(): void {
+        const copyDir = (src: string, dest: string) => {
+            if (!fs.existsSync(dest)) {
+                fs.mkdirSync(dest, { recursive: true })
             }
-        })
+
+            const entries = fs.readdirSync(src, { withFileTypes: true })
+
+            for (const entry of entries) {
+                const srcPath = path.join(src, entry.name)
+                const destPath = path.join(dest, entry.name)
+
+                if (entry.isDirectory()) {
+                    copyDir(srcPath, destPath)
+                } else {
+                    fs.copyFileSync(srcPath, destPath)
+                }
+            }
+        }
+
+        copyDir('assets', 'public/assets')
     }
 }
