@@ -1,9 +1,9 @@
 import moment from 'moment'
 import Page from './Page'
-import {container} from "tsyringe";
-import Storage from "../Services/Storage";
-import type showdown from "showdown";
-import MarkdownConverter from "../Services/MarkdownConventer";
+import {container} from 'tsyringe';
+import Storage from '../Services/Storage';
+import type showdown from 'showdown';
+import MarkdownConverter from '../Services/MarkdownConventer';
 
 export default class Article extends Page {
   public readonly name: string
@@ -13,7 +13,11 @@ export default class Article extends Page {
   public metadata: showdown.Metadata = {}
 
   private calculateReadingTime(content: string): number {
-    const plainText = content.replace(/[#*`_~\[\]]/g, '')
+    const plainText = content
+        .replace(/!\[.*?]\(.*?\)/g, '')
+        .replace(/\[.*?]\(.*?\)/g, '')
+        .replace(/[`*_~#>]/g, '')
+
     const wordCount = plainText.trim().split(/\s+/).length
 
     return Math.ceil(wordCount / 200)
@@ -23,7 +27,7 @@ export default class Article extends Page {
     super()
 
     this.name = name
-    this.htmlName = this.name.replace('.md', '.html')
+    this.htmlName = this.name.replace(/^\d+-/, '').replace('.md', '.html')
 
     const markdownConverter: MarkdownConverter = container.resolve(MarkdownConverter)
 

@@ -1,9 +1,10 @@
 import {container} from 'tsyringe'
 import fs from 'fs'
-import path from 'path'
 import Article from './Pages/Article'
 import Index from './Pages/Index'
 import Storage from './Services/Storage'
+import NotFound from './Pages/NotFound'
+import About from './Pages/About'
 
 export default class Blog {
     private readonly storage: Storage
@@ -15,7 +16,7 @@ export default class Blog {
     public generate(): void {
         const articles = this.getArticles()
 
-        this.copyAssets()
+        this.storage.copyDir('assets', 'public/assets')
 
         articles.forEach((article: Article): void => {
             const path: string = 'public/' + article.htmlName
@@ -24,35 +25,19 @@ export default class Blog {
             this.storage.writeContent(path, html)
         })
 
+        this.storage.writeContent('public/about.html', new About().getHtml())
+        this.storage.writeContent('public/404.html', new NotFound().getHtml())
         this.storage.writeContent('public/index.html', new Index(articles).getHtml())
     }
 
     private getArticles(): Article[] {
         return fs.readdirSync('articles')
             .filter(file => file.endsWith('.md'))
+            .sort((a, b) => {
+                const numA = parseInt(a.match(/^(\d+)-/)?.[1] || '0')
+                const numB = parseInt(b.match(/^(\d+)-/)?.[1] || '0')
+                return numB - numA
+            })
             .map((post: string) => new Article(post))
-    }
-
-    private copyAssets(): void {
-        const copyDir = (src: string, dest: string) => {
-            if (!fs.existsSync(dest)) {
-                fs.mkdirSync(dest, { recursive: true })
-            }
-
-            const entries = fs.readdirSync(src, { withFileTypes: true })
-
-            for (const entry of entries) {
-                const srcPath = path.join(src, entry.name)
-                const destPath = path.join(dest, entry.name)
-
-                if (entry.isDirectory()) {
-                    copyDir(srcPath, destPath)
-                } else {
-                    fs.copyFileSync(srcPath, destPath)
-                }
-            }
-        }
-
-        copyDir('assets', 'public/assets')
     }
 }

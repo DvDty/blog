@@ -22,10 +22,22 @@ export default class Storage {
     fs.writeFileSync(path, content)
   }
 
-  public copyImage(sourcePath: string, targetPath: string): void {
-    const dir = path.dirname(targetPath)
-    fs.mkdirSync(dir, { recursive: true })
+  public copyDir(src: string, dest: string): void {
+    if (!fs.existsSync(dest)) {
+      fs.mkdirSync(dest, { recursive: true })
+    }
 
-    fs.copyFileSync(sourcePath, targetPath)
+    const entries = fs.readdirSync(src, { withFileTypes: true })
+
+    for (const entry of entries) {
+      const srcPath = path.join(src, entry.name)
+      const destPath = path.join(dest, entry.name)
+
+      if (entry.isDirectory()) {
+        this.copyDir(srcPath, destPath)
+      } else {
+        fs.copyFileSync(srcPath, destPath)
+      }
+    }
   }
 }

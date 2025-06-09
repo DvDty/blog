@@ -1,5 +1,5 @@
 import Page from './Page'
-import Article from "./Article";
+import Article from './Article';
 
 export default class Index extends Page {
     public constructor(articles: Article[]) {
