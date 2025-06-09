@@ -1,43 +1,43 @@
-import {container} from 'tsyringe'
-import fs from 'fs'
-import Article from './Pages/Article'
-import Index from './Pages/Index'
-import Storage from './Services/Storage'
-import NotFound from './Pages/NotFound'
-import About from './Pages/About'
+import { container } from 'tsyringe';
+import fs from 'fs';
+import Article from './Pages/Article';
+import Index from './Pages/Index';
+import Storage from './Services/Storage';
+import NotFound from './Pages/NotFound';
+import About from './Pages/About';
 
 export default class Blog {
-    private readonly storage: Storage
+    private readonly storage: Storage;
 
     constructor() {
-        this.storage = container.resolve(Storage)
+        this.storage = container.resolve(Storage);
     }
 
     public generate(): void {
-        const articles = this.getArticles()
+        const articles = this.getArticles();
 
-        this.storage.copyDir('assets', 'public/assets')
+        this.storage.copyDir('assets', 'public/assets');
 
         articles.forEach((article: Article): void => {
-            const path: string = 'public/' + article.htmlName
-            const html: string = article.getHtml()
+            const path: string = 'public/' + article.htmlName;
+            const html: string = article.getHtml();
 
-            this.storage.writeContent(path, html)
-        })
+            this.storage.writeContent(path, html);
+        });
 
-        this.storage.writeContent('public/about.html', new About().getHtml())
-        this.storage.writeContent('public/404.html', new NotFound().getHtml())
-        this.storage.writeContent('public/index.html', new Index(articles).getHtml())
+        this.storage.writeContent('public/about.html', new About().getHtml());
+        this.storage.writeContent('public/404.html', new NotFound().getHtml());
+        this.storage.writeContent('public/index.html', new Index(articles).getHtml());
     }
 
     private getArticles(): Article[] {
         return fs.readdirSync('articles')
             .filter(file => file.endsWith('.md'))
             .sort((a, b) => {
-                const numA = parseInt(a.match(/^(\d+)-/)?.[1] || '0')
-                const numB = parseInt(b.match(/^(\d+)-/)?.[1] || '0')
-                return numB - numA
+                const numA = parseInt(a.match(/^(\d+)-/)?.[1] || '0');
+                const numB = parseInt(b.match(/^(\d+)-/)?.[1] || '0');
+                return numB - numA;
             })
-            .map((post: string) => new Article(post))
+            .map((post: string) => new Article(post));
     }
 }

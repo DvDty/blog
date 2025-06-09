@@ -1,9 +1,9 @@
-import Page from './Page'
+import Page from './Page';
 import Article from './Article';
 
 export default class Index extends Page {
     public constructor(articles: Article[]) {
-        super()
+        super();
 
         articles.forEach((article: Article) => {
             this.html += `     
@@ -14,7 +14,7 @@ export default class Index extends Page {
 
                     <div>${article.metadata.created_at} • ${article.readingTime} min read</div>
                 </div>
-            `
-        })
+            `;
+        });
     }
 }
