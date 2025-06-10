@@ -1,5 +1,17 @@
-# Easy blog
+# My personal blog
 
-Easy blog is a simple autonomous blog generation tool. It converts markdown content to HTML pages, collected in easily navigatable landing page.
+https://grancharov.dev/
 
-Demo available [here](https://dvdty.github.io/easy-blog/).
+Hosted on GitHub Pages with a [custom domain](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site).
+
+Run locally with [🍞 bun.sh](https://bun.sh/).
+
+```bash
+bun install
+bun run index.ts
+```
+
+Lint:
+```bash
+bun run lint
+```

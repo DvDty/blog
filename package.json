@@ -15,8 +15,7 @@
   },
   "scripts": {
     "start": "nodemon",
-    "lint": "eslint . --ext .ts",
-    "lint:fix": "eslint . --ext .ts --fix",
+    "lint": "eslint . --ext .ts --fix",
     "build": "tsc",
     "generate": "bun run index.ts"
   },
