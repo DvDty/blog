@@ -4,7 +4,6 @@ import Article from './Pages/Article';
 import Index from './Pages/Index';
 import Storage from './Services/Storage';
 import NotFound from './Pages/NotFound';
-import About from './Pages/About';
 
 export default class Blog {
     private readonly storage: Storage;
@@ -25,7 +24,6 @@ export default class Blog {
             this.storage.writeContent(path, html);
         });
 
-        this.storage.writeContent('public/about.html', new About().getHtml());
         this.storage.writeContent('public/404.html', new NotFound().getHtml());
         this.storage.writeContent('public/index.html', new Index(articles).getHtml());
     }

@@ -8,7 +8,7 @@ export default class Index extends Page {
         articles.forEach((article: Article) => {
             this.html += `     
                 <div style="margin-bottom: 40px;">
-                    <div style="margin-bottom: 15px;">
+                    <div style="margin-bottom: 5px;">
                         <h1><a href="${article.htmlName}">${article.metadata.title}</a></h1>
                     </div>
 

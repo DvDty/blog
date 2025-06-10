@@ -50,7 +50,7 @@ export default class Article extends Page {
             }
         }
 
-        this.content = `# ${this.metadata.title} \n ${date} \n\n ${this.content}`;
+        this.content = `# ${this.metadata.title} \n <div class="article-date">${date}</div> \n\n ${this.content}`;
 
         this.readingTime = this.calculateReadingTime(this.content);
 
